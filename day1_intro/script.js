@@ -1,0 +1,221 @@
+// console.log("Hello World!!!!", "Akhil Sharma", "geekster", "Web");
+// console.log("Hello World!!!!", "Akhil Sharma", "geekster", "Web");
+// console.log("Hello World!!!!", "Akhil Sharma", "geekster", "Web");
+// console.log("Hello World!!!!", "Akhil Sharma", "geekster", "Web");
+// console.log("Hello World!!!!", "Akhil Sharma", "geekster", "Web");
+
+// console.log(1,4,5,7,8,9,3,4);
+
+// let ak = "Session";
+// var sum  = 50;
+// var sum = 30;
+// const yes = true;
+
+// let AK = "Session";
+
+// console.log(ak, sum, sum, yes, AK);
+
+
+var a= 234213;
+// console.log(a);
+// let b = "Akhil Sharma";
+let c = true;
+let d = null;
+let e = undefined;
+let f = BigInt(72534823574281345213);
+let  g = Symbol('Geekster!!!');
+// console.log(typeof a,typeof b,typeof c,typeof d,typeof e,typeof f,typeof g)
+
+let obj = {
+    name:"Akhil Sharma",
+    job:"SDE",
+    company:"Geekster",
+    marks:75,
+    age:21,
+    salary:"Main nhi batauga"
+}
+
+obj.location = "Gurugram"
+obj.age = 22;
+delete  obj.salary;
+// console.log(obj);
+
+// console.log(2**3);
+// console.log(typeof obj);
+
+
+
+// console.log(2 == "2");
+
+// let a3 = 10;
+// let a3String = BigInt(a3);
+// console.log(a3String);
+// console.log(typeof(a3+""));
+
+
+// let shoppingAmount = 56;
+// if(shoppingAmount > 1000){
+//     //10% discount
+//     let discount = 0.10 * shoppingAmount;
+//     console.log("you will be getting 10% discount of amount:- " + discount);
+// }else if(shoppingAmount >= 500 && shoppingAmount <= 1000){
+//     //5% discount
+//     let discount = 0.05 * shoppingAmount;
+//     console.log("you will be getting 5% discount of amount:- " + discount)
+// }else{
+//     console.log("No discount will be givene to you!!!");
+// }
+
+
+// let cookiesAccepted = false;
+// if(true){
+//     //strore this info in bbrowser
+// }else{
+//     //no need to store anything
+// }
+
+
+
+// let shippingOption = "Normal Delievry express";
+
+// switch(shippingOption){
+//     case 'Express':
+//         console.log('Your package is being delivered via Express in 1-2 days');
+//         break;
+//     case 'one-day Delievery':
+//         console.log('Your package is being delivered via one day delivery service, which means it');
+//         break;
+//     case "Normal Delievry":
+//         console.log("Package will be delievered in 5-7 days");
+//         break;
+//     default:
+//         console.log("Invalid Shipping Option")
+// }
+
+
+// for(let i=1;i<=100000;i++){
+//     console.log("Akhil Sharma" + i);
+// }
+
+// let arr = [
+//     {name:"product1", price:300},
+//     {name:"product2", price:200},
+//     {name:"product3", price:400},
+//     {name:"product4", price:500},
+//     {name:"product5", price:500},
+//     {name:"product6", price:600},
+//     {name:"product7", price:100},
+// ];
+// let total = 0;
+// for(let i=0;i<arr.length;i++){
+//     total = total + arr[i].price
+//     // console.log(arr[i].price);
+// }
+// console.log(total);
+
+
+// let i = -1000;
+// while(i<10){
+//     console.log(i);
+//     i++;
+// }
+
+
+
+
+
+// let i = 10;
+// do{
+//     console.log("Hello world");
+//     i++;
+// }while(i<5)
+
+
+
+
+// function sum(a, b){
+//     // console.log(a+b);
+//     return a+b;
+// }
+
+// let ans = sum(10, 20);
+// console.log(ans);
+
+// function prime(num){
+//     if(num<2){
+//         return false;
+//     }
+//     for(i=2; i<num; i++){
+//         if(num%i==0){
+//             return false;
+//         }
+//     }
+//     return true;
+// }
+// let result = prime(1);
+// console.log(result);
+ 
+
+// function prime(num)
+// {
+//     if(num==0 || num==1)
+// {
+//     console.log("not a prime number");
+//     return;
+// }
+//     for(let i=2;i<num/2;i++)
+//     {
+//         if(num%i==0)
+//         {
+//             console.log("not a prime number");
+//             return;
+//         }
+//     }
+//     console.log("prime number");
+// }
+// prime(50);
+
+
+
+
+// function sum(){
+//     var c3 = 30;
+// }
+// console.log(c3);
+
+// if(true){
+//     var b = 20;
+// }
+
+// console.log(b);
+
+// let a2 = 10;
+
+// {
+//     const a1 = 10;
+//     // a1 = 30;
+//     console.log(a1);
+// }
+// a1 = 30;
+// console.log(a2);
+
+
+
+
+
+
+
+let z = 30;
+z--;
+function outer(){
+    let x = 10;
+    x++;
+    function inner(){
+        let y = 20;
+        z++;
+        --x;
+        console.log(x,y,z);
+    }
+    inner()
+}
+outer();

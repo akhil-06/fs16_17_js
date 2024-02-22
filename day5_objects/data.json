@@ -1,0 +1,13 @@
+{
+    "name": "test_keywords",
+    "rollNo": 1234567890,
+    "isMarried": false,
+    "bla": null,
+    "arr":[1,2,3,4,5,6,{"name":"Akhil"}],
+    "myObj":{
+        "name":"Akhil",
+        "marks":45,
+        "shopItem1":["food", "clothes",{"a":true}]
+    }
+}
+
