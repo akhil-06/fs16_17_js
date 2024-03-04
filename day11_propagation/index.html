@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event propagation</title>
+    <style>
+        #div1{
+            background-color: green;
+            padding: 25px;
+            border: 1px solid black;
+        }
+        #div2{
+            background-color: yellow;
+            padding: 20px;
+            border: 1px solid black;
+        }
+        #div3{
+            padding: 10px;
+            background-color: tomato;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button>Button 1</button>
+        <button>Button 2</button>
+        <button>Button 3</button>
+        <button>Button 4</button>
+        <button>Button 5</button>
+        <button>Button 6</button>
+        <button>Button 7</button>
+        <button>Button 8</button>
+        <h1>Hi </h1>
+        <h1>Hi </h1>
+        <h1>Hi </h1>
+        <h1>Hi </h1>
+        <h1>Hi </h1>
+    </div>
+
+    <!-- <h1>Event Propagation</h1>
+    <div id="div1">
+        component 1
+        <div id="div2">
+            component 2
+            <div id="div3">
+                component 3
+            </div>
+        </div>
+    </div> -->
+    <script src="./script.js"></script>
+</body>
+</html>
