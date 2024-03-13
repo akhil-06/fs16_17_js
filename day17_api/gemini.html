@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gemini Clone</title>
+  </head>
+  <body>
+    <main>
+      <div class="msg-conatiner">
+        <div class="user-msg">User: Hello</div>
+        <div class="bot-msg">Bot: Hello, How I can assist You</div>
+      </div>
+
+      <div class="user-input-div">
+        <input type="text" placeholder="chat with our bot" class="user-input" />
+        <button class="btn">Search With Gemini</button>
+      </div>
+    </main>
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/generative-ai": "https://esm.run/@google/generative-ai"
+        }
+      }
+    </script>
+
+    <script type ="module">
+      import { GoogleGenerativeAI } from "@google/generative-ai";
+      const API_KEY = "AIzaSyCl2Ste-OJ61OsjXdBtDOM8hAjZY6eBnmk";
+      // Access your API key (see "Set up your API key" above)
+      const genAI = new GoogleGenerativeAI(API_KEY);
+      document.querySelector(".btn").addEventListener("click", run);
+
+      async function run() {
+        // alert("fun run");
+        // For text-only input, use the gemini-pro model
+        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+        let userInput = document.querySelector(".user-input").value;
+        let userMesageDisplayDiv = document.createElement("div");
+        userMesageDisplayDiv.className = 'user-msg';
+        userMesageDisplayDiv.textContent = `User: ${userInput}`;
+        document.querySelector(".msg-conatiner").appendChild(userMesageDisplayDiv);
+
+        const prompt = userInput;
+
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        const text = response.text();
+        console.log(text);
+        
+        let botmessagediv = document.createElement("div");
+        botmessagediv.className = "bot-msg";
+        botmessagediv.textContent = `Bot:- ${text}`;
+        document.querySelector(".msg-conatiner").appendChild(botmessagediv);
+      }
+
+    //   run();
+    </script>
+  </body>
+</html>
