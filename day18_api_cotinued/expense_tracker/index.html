@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Expense Tracker</h1>
+        <div class="tabs">
+            <button id="expenseTab" class="tab-btn active">Expense Tracker</button>
+            <button id="taxTab" class="tab-btn">Tax Calculator</button>
+            <button id="taxSavingTab" class="tab-btn">Tax Saving Calculator</button>
+        </div>
+        <div id="expenseSection" class="section active">
+            <div class="input-section">
+                <input type="number" id="monthlySalary" placeholder="Enter Monthly Salary">
+                <input type="text" id="itemName" placeholder="Enter Item Name">
+                <input type="number" id="expense" placeholder="Enter Amount">
+                <button id="addExpense">Add Expense</button>
+            </div>
+            <div class="chart-container">
+                <canvas id="myChart"></canvas>
+            </div>
+            <div id="savingsInfo"></div>
+        </div>
+        <div id="taxSection" class="section">
+            <!-- Tax Calculator Section -->
+            <h2>Tax Calculator</h2>
+            <div id="taxCalculator">
+                <label for="income">Enter Annual Income:</label>
+                <input type="number" id="income" placeholder="Enter annual income">
+                <button id="calculateTax">Calculate Tax</button>
+                <div id="taxResult"></div>
+                <button id="payTax">Pay Tax</button>
+            </div>
+        </div>
+        <div id="taxSavingSection" class="section">
+            <!-- Tax Saving Calculator Section -->
+            <h2>Tax Saving Calculator</h2>
+            <div id="taxSavingCalculator">
+                <label for="availableSavings">Available Savings:</label>
+                <input type="number" id="availableSavings" placeholder="Enter available savings">
+                <button id="suggestTaxSaving">Suggest Tax Saving Options</button>
+                <div id="taxSavingOptions"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Expense Tracker</h1>
+        <div class="tabs">
+            <button id="expenseTab" class="tab-btn active">Expense Tracker</button>
+            <button id="taxTab" class="tab-btn">Tax Calculator</button>
+        </div>
+        <div id="expenseSection" class="section active">
+            <div class="input-section">
+                <input type="number" id="monthlySalary" placeholder="Enter Monthly Salary">
+                <input type="text" id="itemName" placeholder="Enter Item Name">
+                <input type="number" id="expense" placeholder="Enter Amount">
+                <button id="addExpense">Add Expense</button>
+            </div>
+            <div class="chart-container">
+                <canvas id="myChart"></canvas>
+            </div>
+            <div id="savingsInfo"></div>
+        </div>
+        <div id="taxSection" class="section">
+            <!-- Tax Calculator Section -->
+            <h2>Tax Calculator</h2>
+            <div id="taxCalculator">
+                <label for="income">Enter Annual Income:</label>
+                <input type="number" id="income" placeholder="Enter annual income">
+                <select id="taxRegime">
+                    <option value="old">Old Tax Regime</option>
+                    <option value="new">New Tax Regime</option>
+                </select>
+                <button id="calculateTax">Calculate Tax</button>
+                <div id="taxResult"></div>
+                <button id="payTax">Pay Tax</button>
+            </div>
+        </div>
+    </div> 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> -->
+
+
+
+
