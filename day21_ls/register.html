@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+  </head>
+  <body>
+    <h1>Register Page</h1>
+    <form action="./login.html" name="RegForm" onsubmit="return validateForm()">
+      <label for="Name">Name:- </label>
+      <input type="text" name="Name"  placeholder="Your name" />
+      <br />
+      <label for="EMail">EmailId:- </label>
+      <input type="email" name="EMail" placeholder="a@gmail.com" />
+      <br />
+      <label for="Password">Password:- </label>
+      <input type="password" name="Password"  placeholder="******" />
+      <br />
+      <label for="Confrim">Confirm Password:- </label>
+      <input type="password" name="Confrim" placeholder="******" />
+      <br />
+
+      <input type="submit" value="Register" name="Submit" class="input1"/>
+    </form>
+
+    <script src="./register.js"></script>
+  </body>
+</html>

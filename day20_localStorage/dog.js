@@ -1,4 +1,5 @@
 let likeCount = localStorage.getItem("dogLike")?localStorage.getItem("dogLike"):0;
+console.log(typeof likeCount);
 
 document.getElementById("likeBtn").addEventListener('click',()=>{
     likeCount++;
