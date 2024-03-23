@@ -1,0 +1,11 @@
+.img-container{
+    margin: 10px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.img-container img{
+    width: 150px;
+    height: 200px;
+    margin-top: 8px;
+}
