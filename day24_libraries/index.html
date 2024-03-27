@@ -1,179 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Covid Report Data</title>
-    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 Chart</title>
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-      #chart-container {
-        width: 800px;
-        margin: 50px auto;
-      }
-      .box{
-        width: 100px;
-        height: 100px;
-        background-color: cyan;
-        cursor: pointer;
-        margin: 200px;
-      }
+        #chart-container {
+            width: 800px;
+            margin: 50px auto;
+        }
     </style>
-  </head>
-  <body>
-    <div class="box"></div>
-    <h1>Covid Data</h1>
+</head>
+<body>
     <div id="chart-container">
-      <!-- <canvas id="covid-chart"></canvas> -->
+        <canvas id="covid-chart"></canvas>
     </div>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-let box = document.querySelector(".box")
-        anime({
-            targets:box,
-            scale:2,
-            duration:1000,
-            easing:'easeInOut',
-            direction:'alternate',
-            loop:true
+        // Chart initialization
+        const ctx = document.getElementById('covid-chart').getContext('2d');
+        const covidChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'COVID-19 Cases',
+                    data: [],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)', // Fill color
+                    borderColor: 'rgba(54, 162, 235, 1)', // Line color
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        type: 'time',
+                        time: {
+                            unit: 'day',
+                            displayFormats: {
+                                day: 'MMM D'
+                            }
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Date'
+                        }
+                    }],
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Cases'
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                }
+            }
         });
 
+        // Fetch COVID-19 data from API
+        async function fetchCovidData() {
+            try {
+                const response = await fetch('https://disease.sh/v3/covid-19/historical/all?lastdays=10');
+                const data = await response.json();
 
-      const ctx = document.getElementById("covid-chart");
-      let covidChart = new Chart(ctx, {
-        type: "pie",
-        data: {
-          labels: [],
-          datasets: [
-            {
-              label: "Covid-19 Cases",
-              data: [],
-              borderWidth: 1,
-              backgroundColor: "green",
-            },
-          ],
-        },
-        options: {
-          scales: {
-            yAxes: [
-              {
-                scaleLabel: {
-                  display: true,
-                  labelString: "Number of cases",
-                },
-                ticks: {
-                  beginAtZero: true,
-                },
-              },
-            ],
+                // Extract dates and cases from the API response
+                const dates = Object.keys(data.cases).map(date => new Date(date));
+                const cases = Object.values(data.cases);
 
-            xAxes: [
-              {
-                type: {
-                  type: "time",
-                  time: {
-                    unit: "day",
-                    displayFormats: {
-                      day: "MM DD YYYY",
-                    },
-                  },
-                  scaleLabel: {
-                    display: true,
-                    labelString: "Dates",
-                  },
-                  ticks: {
-                    beginAtZero: true,
-                  },
-                },
-              },
-            ],
-          },
-        },
-      });
-
-      async function fetchCovidData() {
-        try {
-          let response = await fetch(
-            "https://disease.sh/v3/covid-19/historical/all?lastdays=10"
-          );
-          let data = await response.json();
-          console.log(data);
-
-          //extrcat the dates and cases form here
-          let dates = Object.keys(data.cases).map((date) => new Date(date));
-          // console.log(dates);
-          let cases = Object.values(data.cases);
-          // console.log(cases);
-
-          //update the chart from here
-          covidChart.data.labels = dates;
-          covidChart.data.datasets[0].data = cases;
-          covidChart.update();
-        } catch (err) {
-          console.log(err);
+                // Update chart with fetched data
+                covidChart.data.labels = dates;
+                covidChart.data.datasets[0].data = cases;
+                covidChart.update();
+            } catch (error) {
+                console.error('Error fetching COVID-19 data:', error);
+            }
         }
-      }
-      fetchCovidData();
+
+        // Fetch data when the page loads
+        fetchCovidData();
     </script>
-  </body>
+</body>
 </html>
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>ChartJs Library</h1>
-    <div>
-      <canvas id="myChart"></canvas>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <script>
-        let stockData = {
-            labels:[
-                "Jan",
-                "Feb",
-                "Mar",
-                "Apr",
-                "may",
-                "Jun",
-                "Jul",
-                "Aug",
-                "Sep",
-                "Oct",
-                "Nov",
-                "Dec"
-            ],
-            datasets:[
-                {
-                    label:"Stock Price",
-                    data: [100, 110,120,130,140,150,160,170,180],
-                    borderWidth:2,
-                    borderColor:"red",
-                    backgroundColor:"#7a5df7",
-                    color:"green"
-
-                }
-            ]
-        };
-      const ctx = document.getElementById("myChart");
-
-      new Chart(ctx, {
-        type: "bar",
-        data: stockData,
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true,
-            },
-          },
-        },
-      });
-    </script>
-  </body>
-</html> -->
