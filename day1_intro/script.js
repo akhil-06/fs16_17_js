@@ -1,3 +1,98 @@
+let pokemonContainer = document.querySelector("#pokemon-card-container");
+let searchInput = document.querySelector("#search");
+// console.log(searchInput.value);
+let filterBtn = document.querySelector('#filter');
+let type = document.querySelector("#type");
+console.log(type);
+
+
+let colors = {
+    normal:'grey',
+    poison:'purple',
+    ground:'yellow',
+    rock:'brown'
+}
+
+function createPokemoncard(details){
+    let card = document.createElement("div");
+    card.classList.add("card");
+    card.innerHTML = `
+    <div class='card-inner'>
+        <div class='card-front'>
+            <div class='id'>${details.id}</div>
+            <img src='${details.sprites.front_default}'>
+            <div class='name'>${details.name}</div>
+            <div class='type'>${details.types[0].type.name}</div>
+        </div>
+
+        <div class='back-card'>
+        <img src='${details.sprites.back_default}'>
+        <div class='ability'>${details.abilities[0].ability.name}</div>
+        <div class='name'>${details.name}</div>
+        </div>
+    </div>
+    `
+    card.querySelector('.card-inner').style.backgroundColor = colors[details.types[0].type.name];
+    return card;
+}
+
+searchInput.addEventListener('input', ()=>{
+    let allCards = document.querySelectorAll(".card");
+    // console.log(allCards);
+    let pokeArray = Array.from(allCards);
+    pokeArray.forEach((element)=>{
+        let pokemonName = element.children[0].children[0].children[2].innerText;
+        if(pokemonName.startsWith(searchInput.value)){
+            element.style.display="block";
+        }else{
+            element.style.display="none";
+        }
+        // console.log(pokemonName);
+    })
+})
+
+filterBtn.addEventListener('click', ()=>{
+    let allCards = document.querySelectorAll(".card");
+    let pokeArray = Array.from(allCards);
+    pokeArray.forEach((element)=>{
+        // console.log((element));
+        let pokemonType = element.children[0].children[0].children[3].innerText;
+        // console.log(pokemonType);
+        if(pokemonType === type.value){
+            element.style.display = "block"
+        }else{
+            element.style.display = "none"
+        }
+    })
+})
+
+async function fetchPokemon(i){
+    let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
+    let result = await response.json();
+    return result;
+}
+
+async function fetchmainpage(){
+    for(let i=1;i<=151;i++){
+        let pokemon = await fetchPokemon(i);
+        // console.log(pokemon);
+        let card = createPokemoncard(pokemon);
+        // console.log(card);
+        pokemonContainer.append(card)
+    }
+}
+
+fetchmainpage()
+
+
+
+
+
+
+
+
+
+
 // console.log("Hello World!!!!", "Akhil Sharma", "geekster", "Web");
 // console.log("Hello World!!!!", "Akhil Sharma", "geekster", "Web");
 // console.log("Hello World!!!!", "Akhil Sharma", "geekster", "Web");
